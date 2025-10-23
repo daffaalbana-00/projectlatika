@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseBalance - Cek Pola Kesehatan Anda</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>RiseBalance</h1>
+        <p>Mudahkan Anda mengecek pola kesehatan dan dapatkan tips hidup sehat.</p>
+    </header>
+
+    <section id="profile">
+        <h2>Buat Profil Anda</h2>
+        <form id="profileForm">
+            <input type="text" id="name" placeholder="Nama" required>
+            <select id="gender" required>
+                <option value="">Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            <input type="number" id="age" placeholder="Umur" required>
+            <button type="submit">Simpan Profil</button>
+        </form>
+        <div id="profileDisplay" style="display: none;">
+            <h3>Profil Anda</h3>
+            <p>Nama: <span id="displayName"></span></p>
+            <p>Jenis Kelamin: <span id="displayGender"></span></p>
+            <p>Umur: <span id="displayAge"></span></p>
+        </div>
+    </section>
+
+    <nav id="menu" style="display: none;">
+        <div class="menu-item" onclick="showSection('sleep')">Cek Kualitas Tidur</div>
+        <div class="menu-item" onclick="showSection('diet')">Cek Pola Makan</div>
+        <div class="menu-item" onclick="showSection('bmi')">Cek BMI</div>
+        <div class="menu-item" onclick="showSection('tips')">Tips Pola Hidup Sehat</div>
+    </nav>
+
+    <section id="sleep" class="check-section" style="display: none;">
+        <h2>Cek Kualitas Tidur</h2>
+        <form id="sleepForm">
+            <input type="time" id="bedTime" required>
+            <label for="bedTime">Waktu Tidur</label>
+            <input type="time" id="wakeTime" required>
+            <label for="wakeTime">Waktu Bangun</label>
+            <button type="submit">Cek Kualitas</button>
+        </form>
+        <div id="sleepResult" style="display: none;"></div>
+    </section>
+
+    <section id="diet" class="check-section" style="display: none;">
+        <h2>Cek Pola Makan</h2>
+        <form id="dietForm">
+            <input type="number" id="calories" placeholder="Jumlah Asupan Kalori (perkiraan)" required>
+            <textarea id="foods" placeholder="Apa saja makanan yang dimakan hari ini?" required></textarea>
+            <button type="submit">Cek Pola Makan</button>
+        </form>
+        <div id="dietResult" style="display: none;"></div>
+    </section>
+
+    <section id="bmi" class="check-section" style="display: none;">
+        <h2>Cek BMI</h2>
+        <form id="bmiForm">
+            <input type="number" id="weight" placeholder="Berat Badan (kg)" step="0.1" required>
+            <input type="number" id="height" placeholder="Tinggi Badan (cm)" required>
+            <button type="submit">Cek BMI</button>
+        </form>
+        <div id="bmiResult" style="display: none;"></div>
+    </section>
+
+    <section id="tips" class="check-section" style="display: none;">
+        <h2>Tips Pola Hidup Sehat</h2>
+        <div id="tipsContent"></div>
+        <button id="shareBtn">Bagikan</button>
+        <button id="downloadBtn">Unduh PDF</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
