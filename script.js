@@ -16,8 +16,14 @@ document.getElementById('profileForm').addEventListener('submit', function(e) {
 });
 
 function showSection(section) {
+    document.getElementById('menu').style.display = 'none'; // Sembunyikan menu
     document.querySelectorAll('.check-section').forEach(sec => sec.style.display = 'none');
-    document.getElementById(section).style.display = 'block';
+    document.getElementById(section).style.display = 'block'; // Tampilkan section yang dipilih
+}
+
+function backToMenu() {
+    document.querySelectorAll('.check-section').forEach(sec => sec.style.display = 'none');
+    document.getElementById('menu').style.display = 'flex'; // Tampilkan menu kembali
 }
 
 document.getElementById('sleepForm').addEventListener('submit', function(e) {
@@ -29,7 +35,7 @@ document.getElementById('sleepForm').addEventListener('submit', function(e) {
     
     let quality = duration >= 7 && duration <= 9 ? 'Baik' : duration < 7 ? 'Kurang' : 'Berlebih';
     results.sleep = { duration, quality };
-    document.getElementById('sleepResult').innerHTML = `<p>Durasi Tidur: ${duration.toFixed(1)} jam - Kualitas: ${quality}</p>`;
+    document.getElementById('sleepResult').innerHTML = `<p>Durasi Tidur: ${duration.toFixed(1)} jam - Kualitas: ${quality}</p><button id="downloadSleepBtn">Unduh PDF</button>`;
     document.getElementById('sleepResult').style.display = 'block';
 });
 
@@ -40,7 +46,7 @@ document.getElementById('dietForm').addEventListener('submit', function(e) {
     const idealCalories = profile.gender === 'Laki-laki' ? (profile.age > 30 ? 2200 : 2500) : (profile.age > 30 ? 1800 : 2200);
     let assessment = calories >= idealCalories * 0.8 && calories <= idealCalories * 1.2 ? 'Seimbang' : calories < idealCalories * 0.8 ? 'Kurang' : 'Berlebih';
     results.diet = { calories, foods, assessment };
-    document.getElementById('dietResult').innerHTML = `<p>Asupan Kalori: ${calories} - Pola: ${assessment}</p><p>Makanan: ${foods}</p>`;
+    document.getElementById('dietResult').innerHTML = `<p>Asupan Kalori: ${calories} - Pola: ${assessment}</p><p>Makanan: ${foods}</p><button id="downloadDietBtn">Unduh PDF</button>`;
     document.getElementById('dietResult').style.display = 'block';
 });
 
@@ -51,7 +57,7 @@ document.getElementById('bmiForm').addEventListener('submit', function(e) {
     const bmi = weight / (height * height);
     let category = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal' : bmi < 30 ? 'Overweight' : 'Obese';
     results.bmi = { bmi: bmi.toFixed(1), category };
-    document.getElementById('bmiResult').innerHTML = `<p>BMI: ${bmi.toFixed(1)} - Kategori: ${category}</p>`;
+    document.getElementById('bmiResult').innerHTML = `<p>BMI: ${bmi.toFixed(1)} - Kategori: ${category}</p><button id="downloadBmiBtn">Unduh PDF</button>`;
     document.getElementById('bmiResult').style.display = 'block';
     generateTips();
 });
@@ -68,6 +74,20 @@ function generateTips() {
     }
 }
 
+// Event listeners untuk download PDF masing-masing
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'downloadSleepBtn') {
+        const element = document.getElementById('sleepResult');
+        html2pdf().from(element).save('RiseBalance-Sleep-Result.pdf');
+    } else if (e.target.id === 'downloadDietBtn') {
+        const element = document.getElementById('dietResult');
+        html2pdf().from(element).save('RiseBalance-Diet-Result.pdf');
+    } else if (e.target.id === 'downloadBmiBtn') {
+        const element = document.getElementById('bmiResult');
+        html2pdf().from(element).save('RiseBalance-BMI-Result.pdf');
+    }
+});
+
 document.getElementById('shareBtn').addEventListener('click', function() {
     if (navigator.share) {
         navigator.share({
@@ -82,5 +102,5 @@ document.getElementById('shareBtn').addEventListener('click', function() {
 
 document.getElementById('downloadBtn').addEventListener('click', function() {
     const element = document.getElementById('tips');
-    html2pdf().from(element).save('RiseBalance-Results.pdf');
+    html2pdf().from(element).save('RiseBalance-Tips-Results.pdf');
 });
