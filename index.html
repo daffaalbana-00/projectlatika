@@ -41,6 +41,7 @@
     </nav>
 
     <section id="sleep" class="check-section" style="display: none;">
+        <button class="back-btn" onclick="backToMenu()">Kembali ke Menu</button>
         <h2>Cek Kualitas Tidur</h2>
         <form id="sleepForm">
             <input type="time" id="bedTime" required>
@@ -49,30 +50,39 @@
             <label for="wakeTime">Waktu Bangun</label>
             <button type="submit">Cek Kualitas</button>
         </form>
-        <div id="sleepResult" style="display: none;"></div>
+        <div id="sleepResult" style="display: none;">
+            <button id="downloadSleepBtn">Unduh PDF</button>
+        </div>
     </section>
 
     <section id="diet" class="check-section" style="display: none;">
+        <button class="back-btn" onclick="backToMenu()">Kembali ke Menu</button>
         <h2>Cek Pola Makan</h2>
         <form id="dietForm">
             <input type="number" id="calories" placeholder="Jumlah Asupan Kalori (perkiraan)" required>
             <textarea id="foods" placeholder="Apa saja makanan yang dimakan hari ini?" required></textarea>
             <button type="submit">Cek Pola Makan</button>
         </form>
-        <div id="dietResult" style="display: none;"></div>
+        <div id="dietResult" style="display: none;">
+            <button id="downloadDietBtn">Unduh PDF</button>
+        </div>
     </section>
 
     <section id="bmi" class="check-section" style="display: none;">
+        <button class="back-btn" onclick="backToMenu()">Kembali ke Menu</button>
         <h2>Cek BMI</h2>
         <form id="bmiForm">
             <input type="number" id="weight" placeholder="Berat Badan (kg)" step="0.1" required>
             <input type="number" id="height" placeholder="Tinggi Badan (cm)" required>
             <button type="submit">Cek BMI</button>
         </form>
-        <div id="bmiResult" style="display: none;"></div>
+        <div id="bmiResult" style="display: none;">
+            <button id="downloadBmiBtn">Unduh PDF</button>
+        </div>
     </section>
 
     <section id="tips" class="check-section" style="display: none;">
+        <button class="back-btn" onclick="backToMenu()">Kembali ke Menu</button>
         <h2>Tips Pola Hidup Sehat</h2>
         <div id="tipsContent"></div>
         <button id="shareBtn">Bagikan</button>
