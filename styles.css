@@ -1,0 +1,85 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); /* Gradasi biru muda ke putih halus */
+    color: #1e3a8a; /* Biru tua untuk teks */
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); /* Gradasi biru tua ke biru muda */
+    color: white;
+    border-radius: 0 0 20px 20px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select, textarea, button {
+    padding: 10px;
+    border: 1px solid #3b82f6;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+}
+
+#menu {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.menu-item {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.check-section {
+    margin-top: 20px;
+}
+
+#tipsContent {
+    margin-bottom: 20px;
+}
