@@ -53,6 +53,11 @@ button:hover {
     background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
 }
 
+.back-btn {
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
 #menu {
     display: flex;
     justify-content: space-around;
